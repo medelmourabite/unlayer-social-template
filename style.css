@@ -1,0 +1,47 @@
+.footer-container {
+    margin: 1rem;
+    padding: 1rem;
+    background-color: #eee;
+    text-align: center;
+}
+
+.social-container {
+    display: flex; 
+    flex-wrap: wrap;
+    background-color: #ccc;
+    margin: 1rem;
+}
+
+.social-container div {
+    margin: 0;
+    padding: 0;
+}
+
+.social-container .social-item {
+    padding: .5rem;
+}
+
+.social-container .social-item a {
+    width: 100%;
+}
+
+.social-container .social-item img {
+    height: 100%;
+    width: 32px;
+
+}
+
+.align-left {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.align-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.align-right {
+    justify-content: flex-end;
+    align-items: flex-end;
+}
