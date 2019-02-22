@@ -1,75 +1,114 @@
 <div class="footer-container" style="background : {{footerBg}}">
-        <div class="footer-text">
-      		{{ footerText | safe }}
-        </div>
-        <div class="social-container  align-{{align}}" style="flex-direction: {{orientation}};
-                                                              background: {{socialBg}};       
-                                                              border-top-width: {{socialBorder.borderTopWidth}};
-                                                              border-top-style: {{socialBorder.borderTopStyle}};
-                                                              border-top-color: {{socialBorder.borderTopColor}} ;
-                                                              border-bottom-width: {{socialBorder.borderBottomWidth}};
-                                                              border-bottom-style: {{socialBorder.borderBottomStyle}};
-                                                              border-bottom-color: {{socialBorder.borderBottomColor}} ;
-                                                              border-right-width: {{socialBorder.borderRightWidth}};
-                                                              border-right-style: {{socialBorder.borderRightStyle}};
-                                                              border-right-color: {{socialBorder.borderRightColor}} ;
-                                                              border-left-width: {{socialBorder.borderLeftWidth}};
-                                                              border-left-style: {{socialBorder.borderLeftStyle}};
-                                                              border-left-color: {{socialBorder.borderLeftColor}} ;
-                                                              ">
-          
-          	{% if isFacebook %}
-            <div class="social-item" style="order: {{orderFacebook}};">
-                <div class="social-icon">
-                    <a href="{{linkFacebook.url}}" target="{{linkFacebook.target}}">
-                        <img src="{{data.iconsBaseUrl}}/facebook/{{themeForm}}-{{themeColor}}.png" 
-                            style="width:{{width}}px" onload="this.style.display = 'block'" />
-                    </a>
-                </div>
-            </div>
-          	{% endif %}
+  <div class="{{ 'flex-container' if orientation == 'column' and align != 'center' }}">
+     <div class="footer-text" style="order: {{ 1 if align == 'left' else 0 }}">
+       {{ footerText | safe }}
+     </div>
+     <div class="social-container  align-{{align}}" style="flex-direction: {{orientation}};
+                                                           background: {{socialBg}};       
+                                                           border-top-width: {{socialBorder.borderTopWidth}};
+                                                           border-top-style: {{socialBorder.borderTopStyle}};
+                                                           border-top-color: {{socialBorder.borderTopColor}} ;
+                                                           border-bottom-width: {{socialBorder.borderBottomWidth}};
+                                                           border-bottom-style: {{socialBorder.borderBottomStyle}};
+                                                           border-bottom-color: {{socialBorder.borderBottomColor}} ;
+                                                           border-right-width: {{socialBorder.borderRightWidth}};
+                                                           border-right-style: {{socialBorder.borderRightStyle}};
+                                                           border-right-color: {{socialBorder.borderRightColor}} ;
+                                                           border-left-width: {{socialBorder.borderLeftWidth}};
+                                                           border-left-style: {{socialBorder.borderLeftStyle}};
+                                                           border-left-color: {{socialBorder.borderLeftColor}} ;
+                                                           ">
+       
+         {% if isFacebook %}
+         <div class="social-item" style="order: {{orderFacebook}};">
+             <div class="social-icon">
+                 <a href="{{linkFacebook.url}}" target="{{linkFacebook.target}}">
+                     <img src="{{data.iconsBaseUrl}}/facebook/{{themeForm}}-{{themeColor}}.png" 
+                         style="width:{{width}}px" onload="this.style.display = 'block'" />
+                 </a>
+             </div>
+         </div>
+         {% endif %}
 
-			{% if isTwitter %}
-            <div class="social-item" style="order: {{orderTwitter}};">
-                <div class="social-icon">
-                    <a href="{{linkTwitter}}">
-                      <img src="{{data.iconsBaseUrl}}/twitter/{{themeForm}}-{{themeColor}}.png" 
-                           style="width:{{width}}px"  onload="this.style.display = 'block'">
-                  	</a>
-                </div>
-            </div>
-			{% endif %}
-			
-          	{% if isLinkedIn %}
-            <div class="social-item" style="order: {{orderLinkedIn}};">
-                <div class="social-icon">
-                
-                      <img src="{{data.iconsBaseUrl}}/linkedin/{{themeForm}}-{{themeColor}}.png" 
-                           style="width:{{width}}px"
-                           onload="this.style.display = 'block'">
-                  	
-                </div>
-            </div>
-          	{% endif %}
-          
-        </div>
-  
- 
-
-        <div class="footer-copyright">
-           	<div class="footer-text">
-          		{% if isUnsubscribe %}
-            	<a href="{{data.linkUnsubscribe}}" target="_blank">Se désinscrire</a>  
-          		{% endif %}
-              	{% if isUnsubscribe and isWebVersion %}
-              	<span class="pipe">|</span>
-              	{% endif %}
-              	{% if isWebVersion %}
-          		<a href="{{data.linkEmail}}" target="_blank">
-          			Ouvrir
-          		</a>
-              	{% endif %}
-        	</div>
-            <strong>©</strong> {{data.now}}
-        </div>
-    </div>
+   {% if isTwitter %}
+         <div class="social-item" style="order: {{orderTwitter}};">
+             <div class="social-icon">
+                 <a href="{{linkTwitter}}">
+                   <img src="{{data.iconsBaseUrl}}/twitter/{{themeForm}}-{{themeColor}}.png" 
+                        style="width:{{width}}px"  onload="this.style.display = 'block'">
+                 </a>
+             </div>
+         </div>
+   {% endif %}
+   
+         {% if isLinkedIn %}
+         <div class="social-item" style="order: {{orderLinkedIn}};">
+             <div class="social-icon">
+             
+                   <img src="{{data.iconsBaseUrl}}/linkedin/{{themeForm}}-{{themeColor}}.png" 
+                        style="width:{{width}}px"
+                        onload="this.style.display = 'block'">
+             </div>
+         </div>
+         {% endif %}
+       
+         {% if isGooglePlus %}
+           <div class="social-item" style="order: {{orderGooglePlus}};">
+               <div class="social-icon">
+                   <a href="{{linkGooglePlus.url}}" target="{{linkGooglePlus.target}}">
+                       <img src="{{data.iconsBaseUrl}}/google-plus/{{themeForm}}-{{themeColor}}.png" 
+                           style="width:{{width}}px" onload="this.style.display = 'block'" />
+                   </a>
+               </div>
+           </div>
+          {% endif %}
+         
+         {% if isYoutube %}
+         <div class="social-item" style="order: {{orderYoutube}};">
+             <div class="social-icon">
+                 <a href="{{linkYoutube.url}}" target="{{linkYoutube.target}}">
+                     <img src="{{data.iconsBaseUrl}}/youtube/{{themeForm}}-{{themeColor}}.png" 
+                         style="width:{{width}}px" onload="this.style.display = 'block'" />
+                 </a>
+             </div>
+         </div>
+         {% endif %}
+       
+         {% if isPinterest %}
+         <div class="social-item" style="order: {{orderPinterest}};">
+             <div class="social-icon">
+                 <a href="{{linkPinterest.url}}" target="{{linkPinterest.target}}">
+                     <img src="{{data.iconsBaseUrl}}/pinterest/{{themeForm}}-{{themeColor}}.png" 
+                         style="width:{{width}}px" onload="this.style.display = 'block'" />
+                 </a>
+             </div>
+         </div>
+         {% endif %}
+       
+         {% if isTumblr %}
+         <div class="social-item" style="order: {{orderTumblr}};">
+             <div class="social-icon">
+                 <a href="{{linkTumblr.url}}" target="{{linkTumblr.target}}">
+                     <img src="{{data.iconsBaseUrl}}/tumblr/{{themeForm}}-{{themeColor}}.png" 
+                         style="width:{{width}}px" onload="this.style.display = 'block'" />
+                 </a>
+             </div>
+         </div>
+         {% endif %}
+     </div>
+</div>
+     <div class="footer-copyright">
+          <div class="footer-text">
+           {% if isUnsubscribe %}
+           <a data-role="unsubscribe" href="#">{{data.unsubscribe}}</a>  
+           {% endif %}
+             {% if isUnsubscribe and isWebVersion %}
+             <span class="pipe">|</span>
+             {% endif %}
+             {% if isWebVersion %}
+           <a data-role="webversion" href="#">{{data.web_version}}</a>
+             {% endif %}
+     </div>
+         <strong>©</strong> {{data.now}}
+     </div>
+ </div>
